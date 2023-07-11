@@ -1,0 +1,26 @@
+@import "src/_var.scss";
+
+.add-todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    input {
+        padding: 0.5rem;
+        width: calc(100% - 1rem - 5px);
+        font-size: 1.3rem;
+    }
+    label {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    };
+    button {
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        margin-top: 1rem;
+        background-color: $clr-prime;
+        border: $clr-success 1px solid;
+    }
+}

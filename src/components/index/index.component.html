@@ -1,0 +1,20 @@
+<h1 class="title">Todo's</h1>
+<div class="add-todo">
+    <app-todo-form (newTodo)="createTodo($event)"></app-todo-form>
+</div>
+<div>
+    <div>
+        <h2 class="title">Offene Todos:</h2>
+    </div>
+    <div class="todo-list">
+        <app-todo-comp *ngFor="let todoItem of getOpenTodos()" [todo]="todoItem" (updateTodo)="handleChange($event)"></app-todo-comp>
+    </div>
+</div>
+<div>
+    <div>
+        <h2 class="title">Geschlossene Todos:</h2>
+    </div>
+    <div class="todo-list">
+        <app-todo-comp *ngFor="let todoItem of getCompletetTodos()" [todo]="todoItem" (updateTodo)="handleChange($event)"></app-todo-comp>
+    </div>
+</div>

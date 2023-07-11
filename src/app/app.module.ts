@@ -3,14 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TodoCompComponent } from '../components/todo-comp/todo-comp.component';
+import { IndexComponent } from '../components/index/index.component';
+import { TodoFormComponent } from '../components/todo-form/todo-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoCompComponent,
+    IndexComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

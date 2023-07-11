@@ -1,0 +1,17 @@
+<div class="todo">
+    <div class="finish">
+        <div class="round">
+            <input type="checkbox" id="checkbox" [checked]="todo.completet" (input)="handleInput($event)" />
+            <label for="checkbox"></label>
+          </div>
+    </div>
+    <div class="details">
+      <h3>{{ todo.title }}</h3>
+      <div class="date">
+        <p>Erstellt: {{ todo.start }}</p>
+        <p>Deadline: {{ todo.deadline }}</p>
+      </div>
+    </div>
+    <button class="delete" (click)="handleDelete($event)">X</button>
+  </div>
+  
