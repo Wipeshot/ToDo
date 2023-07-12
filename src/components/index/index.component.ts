@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoService } from 'src/app/service/todo.service';
 import { ToDo } from 'src/app/interface/todo';
-import { timeout } from 'rxjs';
+import { map, of, timeout } from 'rxjs';
 
 @Component({
   templateUrl: './index.component.html',
@@ -17,10 +17,10 @@ export class IndexComponent {
   }
 
   loadData() {
-    this.todoService.getToDo().subscribe((data: ToDo[]) => {
-      this.todos = data;
-    }, error => {
-      console.error(error);
+    this.todoService.getToDo().subscribe({
+      next: (todos: ToDo[]) => this.todos = todos,
+      error: (error: any) => console.error("FEHLER:", error),
+      complete: () => console.log("Complete Loading..")
     });
   }
 
@@ -47,13 +47,15 @@ export class IndexComponent {
   handleChange(todo: any) {
     if (todo.event === 'delete') {
       console.log("Trying to delete " + todo.todo.id);
-      this.todoService.delete(todo.todo.id).subscribe();
-      
+      this.todoService.delete(todo.todo.id).subscribe({
+        error: (error: any) => console.error(error),
+        complete: () => console.log("Delete complete")
+      });
     } else if (todo.event === 'update') {
-      const index = this.todos.findIndex((t) => t.id === todo.todo.id);
-      if (index !== -1) {
-        this.todos[index] = todo.todo;
-      }
+      this.todoService.update(todo.todo).subscribe({
+        error: (error: any) => console.error(error),
+        complete: () => console.log("Update complete")
+      });
     }
     this.loadData();
   }
@@ -67,12 +69,17 @@ export class IndexComponent {
       completet: false,
     };
     
-    this.todoService.addToDo(newTodo).subscribe((data: ToDo) => {
-      console.log(data);
-      this.loadData();
-    }, error => {
-      console.log(error);
-    });
+    this.todoService.addToDo(newTodo).subscribe(
+      {
+        next: (todo: ToDo) => {
+          this.loadData();
+        },
+        error: (error: any) => {
+          console.error("FEHLER: ", error);
+        },
+        complete: () => console.log("Creation complete")
+      }
+    )
   }
   
 }

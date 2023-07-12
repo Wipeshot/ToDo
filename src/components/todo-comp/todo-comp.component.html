@@ -1,8 +1,8 @@
 <div class="todo">
     <div class="finish">
         <div class="round">
-            <input type="checkbox" id="checkbox" [checked]="todo.completet" (input)="handleInput($event)" />
-            <label for="checkbox"></label>
+            <input type="checkbox" [id]="todo.id" [checked]="todo.completet" (change)="handleInput($event)" />
+            <label [htmlFor]="todo.id"></label>
           </div>
     </div>
     <div class="details">

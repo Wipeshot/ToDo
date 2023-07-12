@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, lastValueFrom } from "rxjs";
 import { ToDo } from "../interface/todo";
 
 @Injectable({
@@ -20,16 +20,15 @@ export class TodoService {
                 "Content-Type": "application/json"
             })
         }
-        return this.http.get<ToDo[]>(`${this.url}/ToDo`, httpOptions)
+        return this.http.get<ToDo[]>(`${this.url}/ToDo`, httpOptions);
     }
 
     public addToDo(todo: ToDo): Observable<ToDo> {
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json"
-            })
+            }),
         }
-
         return this.http.post<ToDo>(`${this.url}/ToDo`, todo, httpOptions)
     }
 
@@ -40,5 +39,14 @@ export class TodoService {
             })
         }
         return this.http.delete(`${this.url}/ToDo/${id}`, httpOptions)
+    }
+
+    public update(todo: ToDo) {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json"
+            })
+        }
+        return this.http.put(`${this.url}/ToDo/${todo.id}`, todo, httpOptions);
     }
 }

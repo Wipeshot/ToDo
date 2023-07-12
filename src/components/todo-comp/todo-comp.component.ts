@@ -11,8 +11,7 @@ export class TodoCompComponent {
 
   handleInput(event: any) {
     let value = (event.target as HTMLInputElement)?.checked;
-    const updatedTodo = { ...this.todo, completet: value };
-    this.updateTodo.emit({"event":"update", "todo": updatedTodo});
+    this.updateTodo.emit({"event":"update", "todo": { ...this.todo, completet: value }});
   }
 
   handleDelete(event: any) {
