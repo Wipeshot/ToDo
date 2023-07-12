@@ -18,9 +18,11 @@ export class IndexComponent {
 
   loadData() {
     this.todoService.getToDo().subscribe({
-      next: (todos: ToDo[]) => this.todos = todos,
+      next: (todos) => {
+        console.log(todos.status)
+        this.todos = todos.body as ToDo[]
+      },
       error: (error: any) => console.error("FEHLER:", error),
-      complete: () => console.log("Complete Loading..")
     });
   }
 
@@ -48,11 +50,22 @@ export class IndexComponent {
     if (todo.event === 'delete') {
       console.log("Trying to delete " + todo.todo.id);
       this.todoService.delete(todo.todo.id).subscribe({
+        next: (todo) => {
+          console.log(todo.status)
+          if(todo.status === 200) {
+            this.loadData()
+          }
+        },
         error: (error: any) => console.error(error),
         complete: () => console.log("Delete complete")
       });
     } else if (todo.event === 'update') {
       this.todoService.update(todo.todo).subscribe({
+        next: (todo) => {
+          if(todo.status === 200) {
+            this.loadData()
+          }
+        },
         error: (error: any) => console.error(error),
         complete: () => console.log("Update complete")
       });
@@ -71,8 +84,11 @@ export class IndexComponent {
     
     this.todoService.addToDo(newTodo).subscribe(
       {
-        next: (todo: ToDo) => {
-          this.loadData();
+        next: (todo) => {
+          console.log(todo.status)
+          if(todo.status === 201) {
+            this.loadData()
+          }
         },
         error: (error: any) => {
           console.error("FEHLER: ", error);
