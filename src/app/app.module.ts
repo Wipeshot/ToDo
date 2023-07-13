@@ -8,13 +8,15 @@ import { TodoCompComponent } from '../components/todo-comp/todo-comp.component';
 import { IndexComponent } from '../components/index/index.component';
 import { TodoFormComponent } from '../components/todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoCompComponent,
     IndexComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

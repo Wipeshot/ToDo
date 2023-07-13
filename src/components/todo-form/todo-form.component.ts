@@ -17,7 +17,7 @@ export class TodoFormComponent {
   addTodo(event: any) {
     this.newTodo.emit({ title: this.todoTitle, deadline: this.todoDeadline });
     this.todoTitle = '';
-    if(this.creationError) {
+    if (this.creationError) {
       this.todoDeadline = '';
     }
   }

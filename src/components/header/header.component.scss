@@ -7,9 +7,8 @@ h1.title {
   text-align: center;
 }
 
-h2.title {
-  font-size: 2rem;
-  color: $clr-prime;
-  width: 100%;
-  text-align: center;
+.header {
+  background-color: $clr-prime;
+  height: 100%;
+  padding: 0.3rem;
 }
