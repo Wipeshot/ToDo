@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TodoService } from 'src/app/service/todo.service';
-import { ToDo } from 'src/app/interface/todo';
+import { TodoService } from '../../app/service/todo.service';
+import { ToDo } from '../../app/interface/todo';
 import { map, of, timeout } from 'rxjs';
 
 @Component({
@@ -22,7 +22,7 @@ export class IndexComponent {
 
   loadData() {
     this.todoService.getToDo().subscribe({
-      next: (todos) => {
+      next: todos => {
         this.todos = todos.body as ToDo[];
       },
       error: (error: any) => console.error('FEHLER:', error),
@@ -53,7 +53,7 @@ export class IndexComponent {
     this.tryToUpdate = true;
     if (todo.event === 'delete') {
       this.todoService.delete(todo.todo.id).subscribe({
-        next: (todo) => {
+        next: todo => {
           if (todo.status === 200) {
             this.loadData();
             this.tryToUpdate = false;
@@ -66,7 +66,7 @@ export class IndexComponent {
       });
     } else if (todo.event === 'update') {
       this.todoService.update(todo.todo).subscribe({
-        next: (todo) => {
+        next: todo => {
           if (todo.status === 200) {
             this.loadData();
             this.tryToUpdate = false;
@@ -90,20 +90,13 @@ export class IndexComponent {
         currentDate.getMonth() + 1
       )
         .toString()
-        .padStart(2, '0')}:${currentDate
-        .getFullYear()
-        .toString()
-        .slice(-2)} ${currentDate
+        .padStart(2, '0')}:${currentDate.getFullYear().toString().slice(-2)} ${currentDate
         .getHours()
         .toString()
-        .padStart(2, '0')}:${currentDate
-        .getMinutes()
-        .toString()
-        .padStart(2, '0')}`,
-      deadline: `${new Date(event.deadline)
-        .getDate()
-        .toString()
-        .padStart(2, '0')}:${(new Date(event.deadline).getMonth() + 1)
+        .padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}`,
+      deadline: `${new Date(event.deadline).getDate().toString().padStart(2, '0')}:${(
+        new Date(event.deadline).getMonth() + 1
+      )
         .toString()
         .padStart(2, '0')}:${new Date(event.deadline)
         .getFullYear()
@@ -125,7 +118,7 @@ export class IndexComponent {
     }
 
     this.todoService.addToDo(newTodo).subscribe({
-      next: (todo) => {
+      next: todo => {
         if (todo.status === 201) {
           this.loadData();
           this.tryToAddToDo = false;

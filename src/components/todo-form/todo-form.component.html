@@ -1,18 +1,9 @@
 <div class="add-todo">
   <label for="title">Titel*</label>
-  <input
-    id="title"
-    type="text"
-    [ngClass]="{ error: creationError }"
-    [(ngModel)]="todoTitle"
-  />
+  <input id="title" type="text" [ngClass]="{ error: creationError }" [(ngModel)]="todoTitle" />
   <label for="deadline">Deadline</label>
   <input id="deadline" type="datetime-local" [(ngModel)]="todoDeadline" />
-  <button
-    (click)="addTodo($event)"
-    [ngClass]="{ clicked: clickedAdd }"
-    [disabled]="clickedAdd"
-  >
+  <button (click)="addTodo($event)" [ngClass]="{ clicked: clickedAdd }" [disabled]="clickedAdd">
     Hinzufügen
   </button>
 </div>

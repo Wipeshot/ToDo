@@ -16,16 +16,8 @@
     <h3>{{ todo?.title }}</h3>
     <div class="date">
       <p>Erstellt: {{ todo?.start }}</p>
-      <p *ngIf="todo?.deadline != 'NaN:NaN:aN NaN:NaN'">
-        Deadline: {{ todo?.deadline }}
-      </p>
+      <p *ngIf="todo?.deadline != 'NaN:NaN:aN NaN:NaN'">Deadline: {{ todo?.deadline }}</p>
     </div>
   </div>
-  <button
-    class="delete"
-    (click)="handleDelete($event)"
-    [disabled]="tryToUpdate"
-  >
-    X
-  </button>
+  <button class="delete" (click)="handleDelete($event)" [disabled]="tryToUpdate">X</button>
 </div>
