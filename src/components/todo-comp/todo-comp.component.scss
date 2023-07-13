@@ -4,10 +4,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: $clr-sec;
-  border: $clr-prime 2px solid;
+  background-color: lighten($clr-sec, 30%);
   border-radius: 1rem;
   margin: 1rem;
+  min-height: 6rem;
 }
 
 .finish {

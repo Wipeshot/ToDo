@@ -1,4 +1,6 @@
-<h1 class="title">Todo's</h1>
+<div class="header">
+    <h1 class="title">Todo's</h1>
+</div>
 <div class="add-todo">
   <app-todo-form
     (newTodo)="createTodo($event)"
@@ -8,7 +10,7 @@
 </div>
 <div>
   <div>
-    <h2 class="title" (click)="handleToDoToggle()">Offene Todos:</h2>
+    <h2 class="title" (click)="handleToDoToggle()">Offene Todos <span>({{ getOpenTodos().length }})</span></h2>
   </div>
   <div *ngIf="showToDos" class="todo-list">
     <app-todo-comp
@@ -22,7 +24,7 @@
 <div>
   <div>
     <h2 class="title" (click)="handleClosedToDoToggle()">
-      Geschlossene Todos:
+      Geschlossene Todos <span>({{ getCompletetTodos().length }})</span>
     </h2>
   </div>
   <div *ngIf="showClosedToDos" class="todo-list">

@@ -120,6 +120,12 @@ export class IndexComponent {
       completet: false,
     };
 
+    if (newTodo.title.length < 1) {
+      this.tryToAddToDo = false;
+      this.addToDoError = true;
+      return;
+    }
+
     this.todoService.addToDo(newTodo).subscribe({
       next: (todo) => {
         console.log(todo.status);

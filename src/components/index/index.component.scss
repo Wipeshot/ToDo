@@ -2,7 +2,7 @@
 
 h1.title {
   font-size: 4rem;
-  color: $clr-prime;
+  color: $clr-sec;
   width: 100%;
   text-align: center;
 }
@@ -12,4 +12,10 @@ h2.title {
   color: $clr-prime;
   width: 100%;
   text-align: center;
+}
+
+.header {
+    background-color: $clr-prime;
+    height: 100%;
+    padding: 0.3rem;
 }
