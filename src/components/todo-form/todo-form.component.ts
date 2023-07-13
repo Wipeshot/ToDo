@@ -1,4 +1,5 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { ToDo } from 'src/app/interface/todo';
 
 @Component({
   selector: 'app-todo-form',
@@ -6,7 +7,7 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
   styleUrls: ['./todo-form.component.scss'],
 })
 export class TodoFormComponent {
-  @Output() newTodo = new EventEmitter<any>();
+  @Output() newTodo = new EventEmitter<ToDo>();
   @Input() clickedAdd?: boolean;
   @Input() creationError?: boolean;
 
@@ -16,6 +17,8 @@ export class TodoFormComponent {
   addTodo(event: any) {
     this.newTodo.emit({ title: this.todoTitle, deadline: this.todoDeadline });
     this.todoTitle = '';
-    this.todoDeadline = '';
+    if(this.creationError) {
+      this.todoDeadline = '';
+    }
   }
 }

@@ -1,7 +1,7 @@
 export interface ToDo {
     id?: number;
     title: any;
-    start: string;
+    start?: string;
     deadline?: any;
-    completet: boolean;
+    completet?: boolean;
 }

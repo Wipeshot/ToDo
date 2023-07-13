@@ -67,6 +67,7 @@
   margin: 1rem 0;
   width: 100%;
   padding-left: 1rem;
+  max-width: calc(80% - 5rem);
   .date {
     display: flex;
     flex-direction: column;
@@ -74,18 +75,25 @@
     p {
       margin: 0;
       font-size: 1.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   h3 {
     margin: 0;
     font-size: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 .delete {
   background-color: $clr-danger;
   border: none;
+  min-width: 4rem;
   width: 10%;
+  max-width: 8rem;
   font-size: 4rem;
   border-radius: 0 1rem 1rem 0;
 }
