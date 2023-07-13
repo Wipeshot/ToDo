@@ -1,20 +1,36 @@
 <h1 class="title">Todo's</h1>
 <div class="add-todo">
-    <app-todo-form (newTodo)="createTodo($event)"></app-todo-form>
+  <app-todo-form
+    (newTodo)="createTodo($event)"
+    [clickedAdd]="tryToAddToDo"
+    [creationError]="addToDoError"
+  ></app-todo-form>
 </div>
 <div>
-    <div>
-        <h2 class="title">Offene Todos:</h2>
-    </div>
-    <div class="todo-list">
-        <app-todo-comp *ngFor="let todoItem of getOpenTodos()" [todo]="todoItem" (updateTodo)="handleChange($event)"></app-todo-comp>
-    </div>
+  <div>
+    <h2 class="title" (click)="handleToDoToggle()">Offene Todos:</h2>
+  </div>
+  <div *ngIf="showToDos" class="todo-list">
+    <app-todo-comp
+      *ngFor="let todoItem of getOpenTodos()"
+      [todo]="todoItem"
+      (updateTodo)="handleChange($event)"
+      [tryToUpdate]="tryToUpdate"
+    ></app-todo-comp>
+  </div>
 </div>
 <div>
-    <div>
-        <h2 class="title">Geschlossene Todos:</h2>
-    </div>
-    <div class="todo-list">
-        <app-todo-comp *ngFor="let todoItem of getCompletetTodos()" [todo]="todoItem" (updateTodo)="handleChange($event)"></app-todo-comp>
-    </div>
+  <div>
+    <h2 class="title" (click)="handleClosedToDoToggle()">
+      Geschlossene Todos:
+    </h2>
+  </div>
+  <div *ngIf="showClosedToDos" class="todo-list">
+    <app-todo-comp
+      *ngFor="let todoItem of getCompletetTodos()"
+      [todo]="todoItem"
+      (updateTodo)="handleChange($event)"
+      [tryToUpdate]="tryToUpdate"
+    ></app-todo-comp>
+  </div>
 </div>

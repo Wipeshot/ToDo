@@ -1,17 +1,31 @@
 <div class="todo">
-    <div class="finish">
-        <div class="round">
-            <input type="checkbox" [id]="todo.id" [checked]="todo.completet" (change)="handleInput($event)" />
-            <label [htmlFor]="todo.id"></label>
-          </div>
+  <div class="finish">
+    <div class="round">
+      <input
+        type="checkbox"
+        [id]="todo?.id"
+        [checked]="todo?.completet"
+        (change)="handleInput($event)"
+        [disabled]="tryToUpdate"
+      />
+      <label *ngIf="!tryToUpdate" [htmlFor]="todo?.id"></label>
+      <label *ngIf="tryToUpdate" [htmlFor]=""></label>
     </div>
-    <div class="details">
-      <h3>{{ todo.title }}</h3>
-      <div class="date">
-        <p>Erstellt: {{ todo.start }}</p>
-        <p *ngIf="todo.deadline != 'NaN:NaN:aN NaN:NaN'">Deadline: {{ todo.deadline }}</p>
-      </div>
-    </div>
-    <button class="delete" (click)="handleDelete($event)">X</button>
   </div>
-  
+  <div class="details">
+    <h3>{{ todo?.title }}</h3>
+    <div class="date">
+      <p>Erstellt: {{ todo?.start }}</p>
+      <p *ngIf="todo?.deadline != 'NaN:NaN:aN NaN:NaN'">
+        Deadline: {{ todo?.deadline }}
+      </p>
+    </div>
+  </div>
+  <button
+    class="delete"
+    (click)="handleDelete($event)"
+    [disabled]="tryToUpdate"
+  >
+    X
+  </button>
+</div>

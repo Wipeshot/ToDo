@@ -8,8 +8,12 @@ import { map, of, timeout } from 'rxjs';
   styleUrls: ['./index.component.scss'],
 })
 export class IndexComponent {
-
   public todos: ToDo[];
+  public showToDos: boolean = true;
+  public showClosedToDos: boolean = true;
+  public tryToAddToDo: boolean = false;
+  public addToDoError: boolean = false;
+  public tryToUpdate: boolean = false;
 
   constructor(public todoService: TodoService) {
     this.todos = [];
@@ -19,10 +23,10 @@ export class IndexComponent {
   loadData() {
     this.todoService.getToDo().subscribe({
       next: (todos) => {
-        console.log(todos.status)
-        this.todos = todos.body as ToDo[]
+        console.log(todos.status);
+        this.todos = todos.body as ToDo[];
       },
-      error: (error: any) => console.error("FEHLER:", error),
+      error: (error: any) => console.error('FEHLER:', error),
     });
   }
 
@@ -47,55 +51,96 @@ export class IndexComponent {
   }
 
   handleChange(todo: any) {
+    this.tryToUpdate = true;
     if (todo.event === 'delete') {
-      console.log("Trying to delete " + todo.todo.id);
       this.todoService.delete(todo.todo.id).subscribe({
         next: (todo) => {
-          console.log(todo.status)
-          if(todo.status === 200) {
-            this.loadData()
+          console.log(todo.status);
+          if (todo.status === 200) {
+            this.loadData();
+            this.tryToUpdate = false;
           }
         },
-        error: (error: any) => console.error(error),
-        complete: () => console.log("Delete complete")
+        error: (error: any) => {
+          this.tryToUpdate = false;
+          console.error(error);
+        },
       });
     } else if (todo.event === 'update') {
       this.todoService.update(todo.todo).subscribe({
         next: (todo) => {
-          if(todo.status === 200) {
-            this.loadData()
-          }
-        },
-        error: (error: any) => console.error(error),
-        complete: () => console.log("Update complete")
-      });
-    }
-    this.loadData();
-  }
-
-  createTodo(event: any) {
-    let currentDate = new Date();
-    let newTodo: ToDo = {
-      title: event.title,
-      start: `${currentDate.getDate().toString().padStart(2, '0')}:${(currentDate.getMonth() + 1).toString().padStart(2, '0')}:${currentDate.getFullYear().toString().slice(-2)} ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}`,
-      deadline: `${new Date(event.deadline).getDate().toString().padStart(2, '0')}:${(new Date(event.deadline).getMonth() + 1).toString().padStart(2, '0')}:${new Date(event.deadline).getFullYear().toString().slice(-2)} ${new Date(event.deadline).getHours().toString().padStart(2, '0')}:${new Date(event.deadline).getMinutes().toString().padStart(2, '0')}`,
-      completet: false,
-    };
-    
-    this.todoService.addToDo(newTodo).subscribe(
-      {
-        next: (todo) => {
-          console.log(todo.status)
-          if(todo.status === 201) {
-            this.loadData()
+          if (todo.status === 200) {
+            this.loadData();
+            this.tryToUpdate = false;
           }
         },
         error: (error: any) => {
-          console.error("FEHLER: ", error);
+          this.tryToUpdate = false;
+          console.error(error);
         },
-        complete: () => console.log("Creation complete")
-      }
-    )
+      });
+    }
   }
-  
+
+  createTodo(event: any) {
+    this.tryToAddToDo = true;
+    this.addToDoError = false;
+    let currentDate = new Date();
+    let newTodo: ToDo = {
+      title: event.title,
+      start: `${currentDate.getDate().toString().padStart(2, '0')}:${(
+        currentDate.getMonth() + 1
+      )
+        .toString()
+        .padStart(2, '0')}:${currentDate
+        .getFullYear()
+        .toString()
+        .slice(-2)} ${currentDate
+        .getHours()
+        .toString()
+        .padStart(2, '0')}:${currentDate
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')}`,
+      deadline: `${new Date(event.deadline)
+        .getDate()
+        .toString()
+        .padStart(2, '0')}:${(new Date(event.deadline).getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}:${new Date(event.deadline)
+        .getFullYear()
+        .toString()
+        .slice(-2)} ${new Date(event.deadline)
+        .getHours()
+        .toString()
+        .padStart(2, '0')}:${new Date(event.deadline)
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')}`,
+      completet: false,
+    };
+
+    this.todoService.addToDo(newTodo).subscribe({
+      next: (todo) => {
+        console.log(todo.status);
+        if (todo.status === 201) {
+          this.loadData();
+          this.tryToAddToDo = false;
+        }
+      },
+      error: (error: any) => {
+        this.tryToAddToDo = false;
+        this.addToDoError = true;
+        console.error('FEHLER: ', error);
+      },
+    });
+  }
+
+  handleToDoToggle() {
+    this.showToDos = !this.showToDos;
+  }
+
+  handleClosedToDoToggle() {
+    this.showClosedToDos = !this.showClosedToDos;
+  }
 }
