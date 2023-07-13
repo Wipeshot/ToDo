@@ -23,7 +23,6 @@ export class IndexComponent {
   loadData() {
     this.todoService.getToDo().subscribe({
       next: (todos) => {
-        console.log(todos.status);
         this.todos = todos.body as ToDo[];
       },
       error: (error: any) => console.error('FEHLER:', error),
@@ -128,7 +127,6 @@ export class IndexComponent {
 
     this.todoService.addToDo(newTodo).subscribe({
       next: (todo) => {
-        console.log(todo.status);
         if (todo.status === 201) {
           this.loadData();
           this.tryToAddToDo = false;
