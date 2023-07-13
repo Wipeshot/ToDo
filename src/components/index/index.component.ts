@@ -54,7 +54,6 @@ export class IndexComponent {
     if (todo.event === 'delete') {
       this.todoService.delete(todo.todo.id).subscribe({
         next: (todo) => {
-          console.log(todo.status);
           if (todo.status === 200) {
             this.loadData();
             this.tryToUpdate = false;
