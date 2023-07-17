@@ -1,15 +1,18 @@
 <app-header></app-header>
 <div class="add-todo">
+  <button [ngClass]="{'collapse__btn': true, 'display__none': !showAddForm}" (click)="handleAddForm()"><img src="../../assets/folder-minus.svg"/></button>
+  <button [ngClass]="{'collapse__btn': true, 'display__none': showAddForm}" (click)="handleAddForm()"><img src="../../assets/folder-plus.svg"/></button>
   <app-todo-form
     (newTodo)="createTodo($event)"
     [clickedAdd]="tryToAddToDo"
     [creationError]="addToDoError"
+    [ngClass]="{'display__none': !showAddForm}"
   ></app-todo-form>
 </div>
 <div>
   <div>
     <h2 class="title" (click)="handleToDoToggle()">
-      Offene Todos <span>({{ getOpenTodos().length }})</span>
+      Offene Todos <span>({{ getOpenTodos().length }})</span><img *ngIf="showToDos" src="../../assets/chevron-down.svg"><img *ngIf="!showToDos" src="../../assets/chevron-up.svg">
     </h2>
   </div>
   <div *ngIf="showToDos" class="todo-list">
@@ -24,7 +27,7 @@
 <div>
   <div>
     <h2 class="title" (click)="handleClosedToDoToggle()">
-      Geschlossene Todos <span>({{ getCompletetTodos().length }})</span>
+      Geschlossene Todos <span>({{ getCompletetTodos().length }})</span><img *ngIf="showClosedToDos" src="../../assets/chevron-down.svg"><img *ngIf="!showClosedToDos" src="../../assets/chevron-up.svg">
     </h2>
   </div>
   <div *ngIf="showClosedToDos" class="todo-list">

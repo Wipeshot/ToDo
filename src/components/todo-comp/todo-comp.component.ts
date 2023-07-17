@@ -11,6 +11,8 @@ export class TodoCompComponent {
   @Output() updateTodo = new EventEmitter();
   @Input() tryToUpdate?: boolean;
 
+  description: boolean = false;
+
   handleInput(event: any) {
     let value = (event.target as HTMLInputElement)?.checked;
     this.updateTodo.emit({
@@ -19,7 +21,15 @@ export class TodoCompComponent {
     });
   }
 
-  handleDelete(event: any) {
+  handleDelete() {
     this.updateTodo.emit({ event: 'delete', todo: this.todo });
+  }
+
+  routeToUpdate() {
+    this.updateTodo.emit({event: 'routing', todo: this.todo})
+  }
+
+  showDesc() {
+    this.description = !this.description;
   }
 }

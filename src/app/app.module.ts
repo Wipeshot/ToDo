@@ -9,6 +9,7 @@ import { IndexComponent } from '../components/index/index.component';
 import { TodoFormComponent } from '../components/todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../components/header/header.component';
+import { UpdateCompComponent } from '../components/update-comp/update-comp.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HeaderComponent } from '../components/header/header.component';
     TodoCompComponent,
     IndexComponent,
     TodoFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    UpdateCompComponent
   ],
   imports: [
     BrowserModule,

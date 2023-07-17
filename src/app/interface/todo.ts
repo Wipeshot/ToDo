@@ -1,7 +1,9 @@
 export interface ToDo {
     id?: number;
-    title: any;
+    title?: string;
     start?: string;
-    deadline?: any;
+    deadline?: string;
+    deadlineVal?: Date;
+    description?: string;
     completet?: boolean;
 }

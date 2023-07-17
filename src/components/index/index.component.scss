@@ -12,4 +12,30 @@ h2.title {
   color: $clr-prime;
   width: 100%;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    height: 2rem;
+  }
+}
+
+
+.collapse__btn {
+  position: absolute;
+  right: 0;
+  border: none;
+  background-color: transparent;
+  padding-top: 1rem;
+  img {
+    height: 3rem;
+  }
+}
+
+.display__none {
+  display: none;
+}
+
+.add-todo {
+  min-height: 4rem;
 }

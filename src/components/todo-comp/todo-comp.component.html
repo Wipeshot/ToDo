@@ -1,4 +1,4 @@
-<div class="todo">
+<div class="todo" (click)="showDesc()">
   <div class="finish">
     <div class="round">
       <input
@@ -13,11 +13,18 @@
     </div>
   </div>
   <div class="details">
-    <h3>{{ todo?.title }}</h3>
+    <div class="head">
+      <h3>{{ todo?.title }}</h3>
+      <img (click)="routeToUpdate()" src="../../assets/edit.svg"/>
+    </div>
     <div class="date">
       <p>Erstellt: {{ todo?.start }}</p>
       <p *ngIf="todo?.deadline != 'NaN:NaN:aN NaN:NaN'">Deadline: {{ todo?.deadline }}</p>
     </div>
+    <div *ngIf="description" class="desc">
+      <p>Beschreibung:</p>
+      <p class="desc">{{ todo?.description }}</p>
+    </div>
   </div>
-  <button class="delete" (click)="handleDelete($event)" [disabled]="tryToUpdate">X</button>
+  <button class="delete" (click)="handleDelete()" [disabled]="tryToUpdate">X</button>
 </div>

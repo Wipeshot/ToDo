@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div>
+  <label>Titel</label>
+  <input [value]="todo.title" [(ngModel)]="todoTitle" />
+</div>
+<div>
+  <label>Deadline</label>
+  <input type="datetime-local" [value]="todo.deadlineVal" [(ngModel)]="todoDeadline" />
+</div>
+<div>
+  <label>Beschreibung</label>
+  <textarea [value]="todo.description" [(ngModel)]="todoDescription"></textarea>
+</div>
+<div>
+  <button [disabled]="onUpdate" (click)="update()" class="save">Speichern</button>
+</div>
+<div>
+  <button [disabled]="onUpdate" (click)="cancel()" class="cancel">Abbrechen</button>
+</div>

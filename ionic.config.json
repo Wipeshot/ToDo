@@ -1,0 +1,10 @@
+{
+  "defaultProject": "ToDo",
+  "projects": {
+    "ToDo": {
+      "name": "ToDo",
+      "integrations": {},
+      "type": "angular"
+    }
+  }
+}

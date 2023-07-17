@@ -49,4 +49,8 @@ export class TodoService {
         }
         return this.http.put(`${this.url}/todos/${todo.id}`, todo, {observe: "response"});
     }
+
+    public getToDoForId(id: number) {
+        return this.http.get(`${this.url}/todos/${id}`, {observe: "response"});
+    }
 }
