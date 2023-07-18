@@ -65,8 +65,8 @@ export class UpdateCompComponent implements OnInit {
     });
   }
 
-  updateChars(event: string) {
-    this.descChars = event.length;
+  updateChars(value: string) {
+    this.descChars = value.length;
   }
 
   ngOnInit() {
