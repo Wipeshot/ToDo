@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { TodoService } from '../../app/service/todo.service';
 import { ToDo } from '../../app/interface/todo';
-import { map, of, timeout } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
 })
-export class IndexComponent {
+export class IndexComponent  {
+
   public todos: ToDo[];
   public showToDos: boolean = true;
   public showClosedToDos: boolean = true;
@@ -156,4 +156,5 @@ export class IndexComponent {
   handleAddForm() {
     this.showAddForm = !this.showAddForm;
   }
+
 }

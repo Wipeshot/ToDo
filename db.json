@@ -24,7 +24,7 @@
       "deadline": "28:07:23 07:54",
       "deadlineVal": "2023-07-28T07:54",
       "description": "",
-      "completet": false,
+      "completet": true,
       "id": 4
     },
     {
@@ -35,6 +35,24 @@
       "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam volu",
       "completet": false,
       "id": 5
+    },
+    {
+      "title": "test6",
+      "start": "18:07:23 11:14",
+      "deadline": "NaN:NaN:aN NaN:NaN",
+      "deadlineVal": "",
+      "description": "",
+      "completet": false,
+      "id": 6
+    },
+    {
+      "title": "test7",
+      "start": "18:07:23 11:14",
+      "deadline": "28:07:23 11:14",
+      "deadlineVal": "2023-07-28T11:14",
+      "description": "",
+      "completet": false,
+      "id": 7
     }
   ]
 }
