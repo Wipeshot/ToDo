@@ -88,13 +88,10 @@
       font-size: 1.5rem;
     }
     p.desc {
-      padding: 1.3rem;
+      padding-left: 0.5rem;
       font-size: 1.3rem;
       max-height: 10rem;
-      overflow: scroll;
-      text-overflow: ellipsis;
-      border: darken($clr-sec, 30%) solid 1px;
-      border-radius: 0.2rem;
+      overflow-y: scroll;
     }
     p.desc::-webkit-scrollbar {
       width: 0rem;
@@ -114,6 +111,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
+
+.nowarp {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .delete {

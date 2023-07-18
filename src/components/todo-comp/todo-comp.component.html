@@ -21,9 +21,9 @@
       <p>Erstellt: {{ todo?.start }}</p>
       <p *ngIf="todo?.deadline != 'NaN:NaN:aN NaN:NaN'">Deadline: {{ todo?.deadline }}</p>
     </div>
-    <div *ngIf="description" class="desc">
+    <div *ngIf="todo?.description != ''" class="desc">
       <p>Beschreibung:</p>
-      <p class="desc">{{ todo?.description }}</p>
+      <p [ngClass]="{'desc':true, 'nowarp':!description}">{{ todo?.description }}</p>
     </div>
   </div>
   <button class="delete" (click)="handleDelete()" [disabled]="tryToUpdate">X</button>

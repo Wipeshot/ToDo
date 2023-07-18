@@ -5,6 +5,7 @@ div {
     flex-direction: column;
     width: 100%;
     align-items: center;
+    position: relative;
 }
 
 label {
@@ -23,7 +24,7 @@ textarea {
     width: 80%;
     font-size: 1.5rem;
     height: 10rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.6rem;
 }
 
 button {
@@ -42,4 +43,11 @@ button {
     color: $clr-danger;
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
+}
+
+.limit {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1.2rem;
+    right: 10%;
 }

@@ -12,6 +12,7 @@ export class TodoCompComponent {
   @Input() tryToUpdate?: boolean;
 
   description: boolean = false;
+  descCollapse: boolean = false;
 
   handleInput(event: any) {
     let value = (event.target as HTMLInputElement)?.checked;
