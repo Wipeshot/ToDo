@@ -1,54 +1,54 @@
 @import "/src/var";
 
 div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  position: relative;
 }
 
 label {
-    margin-top: 2rem;
-    width: 80%;
-    text-align: center;
-    font-size: 2rem;
+  margin-top: 2rem;
+  width: 80%;
+  text-align: center;
+  font-size: 2rem;
 }
 
 input {
-    width: 80%;
-    font-size: 1.5rem;
+  width: 80%;
+  font-size: 1.5rem;
 }
 
 textarea {
-    width: 80%;
-    font-size: 1.5rem;
-    height: 10rem;
-    margin-bottom: 2.6rem;
-    resize: none;
+  width: 80%;
+  font-size: 1.5rem;
+  height: 10rem;
+  margin-bottom: 2.6rem;
+  resize: none;
 }
 
 button {
-    width: calc(80% + 5px);
-    font-size: 2rem;
-    border: none;
+  width: calc(80% + 5px);
+  font-size: 2rem;
+  border: none;
 }
 
 .save {
-    color: darken($clr-success, 10%);
-    padding-top: 0.5rem;
-    padding-bottom: 1.5rem;
+  color: darken($clr-success, 10%);
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .cancel {
-    color: $clr-danger;
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
+  color: $clr-danger;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .limit {
-    position: absolute;
-    bottom: 1rem;
-    font-size: 1.2rem;
-    right: 10%;
+  position: absolute;
+  bottom: 1rem;
+  font-size: 1.2rem;
+  right: 10%;
 }

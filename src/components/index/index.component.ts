@@ -120,7 +120,7 @@ export class IndexComponent {
         .toString()
         .padStart(2, '0')}`,
       deadlineVal: event.deadline,
-      description: "",
+      description: '',
       completet: false,
     };
 

@@ -15,16 +15,22 @@
   <div class="details">
     <div class="head">
       <h3>{{ todo?.title }}</h3>
-      <img (click)="routeToUpdate()" src="../../assets/edit.svg"/>
+      <img (click)="routeToUpdate()" src="../../assets/edit.svg" />
     </div>
     <div class="date">
       <p>Erstellt: {{ todo?.start }}</p>
-      <p *ngIf="todo?.deadline != 'NaN:NaN:aN NaN:NaN'">Deadline: {{ todo?.deadline }}</p>
+      <p *ngIf="todo?.deadline != 'NaN:NaN:aN NaN:NaN'">
+        Deadline: {{ todo?.deadline }}
+      </p>
     </div>
     <div *ngIf="todo?.description != ''" class="desc">
       <p>Beschreibung:</p>
-      <p [ngClass]="{'desc':true, 'nowarp':!description}">{{ todo?.description }}</p>
+      <p [ngClass]="{ desc: true, nowarp: !description }">
+        {{ todo?.description }}
+      </p>
     </div>
   </div>
-  <button class="delete" (click)="handleDelete()" [disabled]="tryToUpdate">X</button>
+  <button class="delete" (click)="handleDelete()" [disabled]="tryToUpdate">
+    X
+  </button>
 </div>

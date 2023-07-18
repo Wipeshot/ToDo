@@ -5,18 +5,31 @@
 </div>
 <div>
   <label>Deadline</label>
-  <input type="datetime-local" [value]="todo.deadlineVal" [(ngModel)]="todoDeadline" />
+  <input
+    type="datetime-local"
+    [value]="todo.deadlineVal"
+    [(ngModel)]="todoDeadline"
+  />
 </div>
 <div>
   <div>
-    <label>Beschreibung <br><span>(max. 150Zeichen)</span></label>
-    <textarea (ngModelChange)="updateChars($event)" [value]="todo.description" [(ngModel)]="todoDescription" maxlength="150"></textarea>
+    <label>Beschreibung <br /><span>(max. 150Zeichen)</span></label>
+    <textarea
+      (ngModelChange)="updateChars($event)"
+      [value]="todo.description"
+      [(ngModel)]="todoDescription"
+      maxlength="150"
+    ></textarea>
   </div>
   <span class="limit">{{ descChars }}/150</span>
 </div>
 <div>
-  <button [disabled]="onUpdate" (click)="update()" class="save">Speichern</button>
+  <button [disabled]="onUpdate" (click)="update()" class="save">
+    Speichern
+  </button>
 </div>
 <div>
-  <button [disabled]="onUpdate" (click)="cancel()" class="cancel">Abbrechen</button>
+  <button [disabled]="onUpdate" (click)="cancel()" class="cancel">
+    Abbrechen
+  </button>
 </div>

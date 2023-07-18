@@ -27,7 +27,7 @@ export class TodoCompComponent {
   }
 
   routeToUpdate() {
-    this.updateTodo.emit({event: 'routing', todo: this.todo})
+    this.updateTodo.emit({ event: 'routing', todo: this.todo });
   }
 
   showDesc() {

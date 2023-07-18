@@ -17,7 +17,11 @@ export class TodoFormComponent {
   dateNow: Date = new Date();
 
   addTodo(event: any) {
-    this.newTodo.emit({ title: this.todoTitle, deadline: this.todoDeadline, description: "" });
+    this.newTodo.emit({
+      title: this.todoTitle,
+      deadline: this.todoDeadline,
+      description: '',
+    });
     this.todoTitle = '';
     if (this.creationError) {
       this.todoDeadline = '';
